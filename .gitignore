@@ -1,0 +1,7 @@
+/runtime
+/vagrant
+/vendor
+localdata.txt
+/config/db.php
+/web/images
+/.vscode

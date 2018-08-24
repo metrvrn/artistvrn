@@ -1,0 +1,47 @@
+User-Agent: *
+Disallow: /admin
+Disallow: /saleadmin
+Host: http://artistvrn.ru
+
+
+User-Agent: Yandex
+Crawl-delay: 10
+
+
+User-Agent: YandexBot
+Crawl-delay: 10
+
+
+User-Agent: Mail.Ru
+Crawl-delay: 5
+
+User-Agent: Bingbot
+Disallow: /
+Crawl-delay: 50
+
+User-Agent: AhrefsBot
+Disallow: /
+Crawl-delay: 50
+
+User-Agent: dotbot
+Disallow: /
+Crawl-delay: 50
+
+User-Agent: PiplBot
+Disallow: /
+Crawl-delay: 50
+
+User-Agent: ia_archiver
+Disallow: /
+Crawl-delay: 50
+
+User-Agent: SiteExplorer
+Disallow: /
+Crawl-delay: 50
+
+User-Agent: MJ12bot
+Disallow: /
+
+User-Agent: SurdotlyBot
+Disallow: /
+
