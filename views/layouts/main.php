@@ -44,7 +44,7 @@ $this->beginPage() ?>
         </div>
     </div>
     <?php NavBar::begin([
-            'brandLabel' => LokalFileModel::getDataByKeyFromLocalfile('local_data_nameComppany'),
+            'brandLabel' => 'Магазин "Художник" на оптовой базе "Мэтр"',
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
                 'class' => ''
