@@ -110,6 +110,8 @@ class BitrixController  extends Controller
 	
 		  public function actionBitrixgetxmlcode(){
 			  
+			  
+			      $this->layout = 'ajaxl';
 			  	$model=new BitrixModel();
 				$model->Bitrixgetxmlcode(); 
 			  

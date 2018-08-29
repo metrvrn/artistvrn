@@ -1204,6 +1204,52 @@ class AdminModel extends Model
 		
 	}
 	
+		
+		public function SetIdForAkcii(){
+			
+			$elementsAkcii=Akcii::find()
+			//->where([''=>])
+			->all();
+			
+			
+			if($elementsAkcii){
+				
+				foreach($elementsAkcii as $elementAkcii){
+					
+					
+				$element=Element::find()
+				->where(['xmlcode'=>$elementAkcii->xmlcode])
+				->one();
+				
+				if($element){
+					
+					$elementAkcii->elementid=$element->id;
+					$elementAkcii->save();
+					
+					
+					
+					
+				}
+					
+					
+					
+					
+				}
+				
+				
+				
+				
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+		}
+	
      
 }
 

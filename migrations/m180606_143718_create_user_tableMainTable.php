@@ -113,16 +113,18 @@ class m180606_143718_create_user_tableMainTable extends Migration
             'id' => $this->primaryKey(),
 			'xmlcodep'=> $this->string(),
 			'name'=> $this->string(),
-				'artikul'=> $this->string(),
+			'artikul'=> $this->string(),
 			'code'=> $this->string(),
 			'xmlcode'=> $this->string(),
 			'active'=> $this->boolean(),
 			'codep' => $this->string(),
 			'idp' => $this->integer(),
 			'quantity' => $this->float(),
+			'price' => $this->float(),
+			
 			'issection' => $this->boolean(),
 			'index1' => $this->integer(),
-					'indexp' => $this->integer(),
+			'indexp' => $this->integer(),
 			'index2' => $this->string(),
 			'active' => $this->boolean(),
 			
@@ -132,7 +134,8 @@ class m180606_143718_create_user_tableMainTable extends Migration
 		 $this->createTable('price', [
             'id' => $this->primaryKey(),
 			'type'=>$this->integer(),
-			'elementid'=> $this->integer(),			 
+			'elementid'=> $this->integer(),
+	         'xmlcode' => $this->string(),			
 			'price'=> $this->string(),
 			'index1'=>$this->integer(),
 			]);
@@ -143,6 +146,7 @@ class m180606_143718_create_user_tableMainTable extends Migration
 		
 		 $this->createTable('quantity', [
             'id' => $this->primaryKey(),
+			'xmlcode' => $this->string(),
 			'type'=>$this->integer(),
 			'elementid'=> $this->integer(),			 
 			'quantity'=> $this->float(),
@@ -159,6 +163,7 @@ class m180606_143718_create_user_tableMainTable extends Migration
 			'sessionid'=> $this->string(),
 			
 			'elementid'=> $this->integer(),
+			'xmlcode' => $this->string(),
 			//'price'=> $this->integer(),
 			'sum'=> $this->float(),
 			'quantity'=> $this->float(),
