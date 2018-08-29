@@ -48,15 +48,16 @@ class AkciiModel extends Model
 		 $k=0;
 		 $arrayEl=[];
 		 $arrayIdElement=[];
-		 while($k<7){
-			 $i=rand(0,45);
+		 while($k<13){
+				$k=$k+1;
+				$i=rand(0,45);
 			  $intArray=[];
 			  $intArray['id']= $elementsAkcii[$i]->id;			
 			  $intArray['xmlcode']= $elementsAkcii[$i]->xmlcode;	
 			 
 			 $arrayXmlElement[]=  $intArray['xmlcode'];
 			 $arrayEl[]=$intArray; 
-			 $k=$k+1;
+			 
 			 
 			 
 		 }
