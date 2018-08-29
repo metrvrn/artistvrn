@@ -177,6 +177,7 @@ function printSection($arrSection,$cursection)
 			<p><div class="btn btn-default"  id="btn_admin_Setimageforelementfromfile"  onclick='btn_admin_Setimageforelementfromfile()'        >установить картинки для элементов </div></p>
 		
 		
+		<p><div class="btn btn-default"  id="btn_admin_Setakciifromfile"  onclick='btn_admin_Setakciifromfile()'        >установить акции из файла </div></p>
 		
 		
 		
@@ -193,6 +194,22 @@ function printSection($arrSection,$cursection)
 </div>
 <script>
  
+ 
+ 
+  function btn_admin_Setakciifromfile() {
+    
+
+   var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+   if (this.readyState == 4 && this.status == 200) {
+      mes( this.responseText);
+    }
+  };
+  xhttp.open("GET", "<?=Url::to(['admin/setakciifromfile']) ?>", true);
+  xhttp.send();
+
+ console.log("секции ")
+}
  
 
  function btn_admin_Makesectionfillid() {
