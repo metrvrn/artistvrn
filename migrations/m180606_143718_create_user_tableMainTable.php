@@ -13,7 +13,18 @@ class m180606_143718_create_user_tableMainTable extends Migration
     public function safeUp()
     {    $tableOptions = null;
 	
-	
+	        $this->createTable('akcii', [
+            'id' => $this->primaryKey(),
+			'type'=>$this->integer(),
+			'elementid'=> $this->integer(),	
+	        'xmlcode'=> $this->string(),					
+			'file1'=> $this->string(),
+			'file2'=> $this->string(),
+			'file4'=> $this->string(),
+			'file3'=> $this->integer(),
+			'index1'=>$this->integer(),
+			'index2'=>$this->string(),
+			]);
 	
 	
 	
@@ -36,17 +47,13 @@ class m180606_143718_create_user_tableMainTable extends Migration
 			'datatimeuploade'=> $this->dateTime(),
 			'status'=> $this->integer(),
 			'dуlivery'=> $this->integer(),
-			'payment'=> $this->integer(),
-			
-			'md5'=> $this->string(),
-			
-			
+			'payment'=> $this->integer(),			
+			'md5'=> $this->string(),			
 			'name'=> $this->string(),
 			'email' => $this->string(),
 			'phone' => $this->string(),
 			'adress'=> $this->string(),
-			'comment'=> $this->string(),
-			
+			'comment'=> $this->string(),			
 			'index'=> $this->string(),
 			]);
 
@@ -228,6 +235,9 @@ class m180606_143718_create_user_tableMainTable extends Migration
      */
     public function safeDown()
     {
+		
+		
+		
 		 $this->dropTable('{{%session}}');
 		 $this->dropTable('order');
 		 $this->dropTable('image');
@@ -240,7 +250,8 @@ class m180606_143718_create_user_tableMainTable extends Migration
 		 $this->dropTable('price');
 		 $this->dropTable('usersessitions');
 		 $this->dropTable('quantity');
-					  
+		  $this->dropTable('akcii');
+	 		  
 				  
 		 
     }

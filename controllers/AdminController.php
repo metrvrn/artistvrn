@@ -327,7 +327,31 @@ class AdminController extends Controller
 	
 	}
 	
+	public function actionSetakciifromfile(){
+		
 	
+           $model_admin=new AdminModel();
+		   $model_admin->Setakciifromfile();
+		   
+		   
+		   
+			$this->layout = 'ajaxl';	
+		
+		      Yii::$app->cache->flush(); 
+		 
+		      $model=new AjaxModel();
+		  
+		     $model->message="actionSetakciifromfile ".$model_admin->message;
+		  
+			
+		   return $this->render('ajaxv', [
+         'model' => $model,
+			]);
+			 
+		
+
+	
+	}
 	
 	
 	
