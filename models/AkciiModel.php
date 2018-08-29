@@ -95,7 +95,7 @@ class AkciiModel extends Model
 		 
 		 foreach($elements as $element){
 			$idArray=Array();
-			echo $element->id.'<br>';
+			//echo $element->id.'<br>';
 		
 			
 			
@@ -112,9 +112,9 @@ class AkciiModel extends Model
 			$this->arrElements[]=$idArray;
 		};
 		 
-		 	echo '<br>';
-		 	echo count( $elements);
-	 print_r(   $this->arrElements);
+		 	//echo '<br>';
+		 	//echo count( $elements);
+	// print_r(   $this->arrElements);
 		 
 	 }
 	 
