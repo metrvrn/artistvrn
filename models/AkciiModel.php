@@ -44,13 +44,22 @@ class AkciiModel extends Model
 		 $elementsAkcii=Akcii::find()
 		 ->all();
 		 
+		// print_r( $elementsAkcii);
+		 
 		 
 		 $k=0;
 		 $arrayEl=[];
+
 		 $arrayIdElement=[];
 		 while($k<13){
 				$k=$k+1;
 				$i=rand(0,45);
+
+		 $arrayXmlElement=[];
+		 while(count($arrayXmlElement)<13){
+			
+			  $i=rand(0,45);
+
 			  $intArray=[];
 			  $intArray['id']= $elementsAkcii[$i]->id;			
 			  $intArray['xmlcode']= $elementsAkcii[$i]->xmlcode;	
@@ -58,9 +67,10 @@ class AkciiModel extends Model
 			 $arrayXmlElement[]=  $intArray['xmlcode'];
 			 $arrayEl[]=$intArray; 
 			 
-			 
-			 
 		 }
+		 
+		// print_r($arrayXmlElement);
+		 
 		 
 		 $elements = Element::find()
 		->where(['xmlcode' =>$arrayXmlElement ]) 
