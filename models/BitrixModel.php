@@ -262,6 +262,21 @@ use yii\base\Model;
 					$this->order->save();
 		  
 	  }
+	  
+	  
+	  
+	  public function Bitrixgetxmlcode(){
+		  
+		  $this->message='Bitrixgetxmlcode';
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+	  }
      
     }
 	
