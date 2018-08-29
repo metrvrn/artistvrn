@@ -62,7 +62,7 @@ class AkciiModel extends Model
 			 
 		 }
 		 
-		 print_r($arrayXmlElement);
+		// print_r($arrayXmlElement);
 		 
 		 
 		 $elements = Element::find()
