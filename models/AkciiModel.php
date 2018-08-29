@@ -50,23 +50,44 @@ class AkciiModel extends Model
 		 $k=0;
 		 $arrayEl=[];
 		 $arrayXmlElement=[];
+		 $k=0;
 		 while(count($arrayXmlElement)<13){
-			
+			   
+			  
 			  $i=rand(0,45);
-			  $intArray=[];
-			  $intArray['id']= $elementsAkcii[$i]->id;			
-			  $intArray['xmlcode']= $elementsAkcii[$i]->xmlcode;	
 			 
-			 $arrayXmlElement[]=  $intArray['xmlcode'];
-			 $arrayEl[]=$intArray; 		 
+			  $addElement=false;
+			  
+			  foreach( $arrayXmlElement as  $arrayXmlElemen){
+				  
+				  if($arrayXmlElemen==$elementsAkcii[$i]->xmlcode){
+					  
+					  $addElement=true;
+					  break;
+				  }
+				  
+				  
+			  }
+			  
+			  
+			  if($addElement){continue;}
+			  
+			  $intArray=[];
+			  
+			  
+			  $intArray['id']= $elementsAkcii[$i]->id;			
+			  $intArray['xmlcode']= $elementsAkcii[$i]->xmlcode;
+		      $arrayXmlElement[ ]=  $intArray['xmlcode'];
+			  
+			  $arrayEl[$k]=$intArray; 		 
 			 
 		 }
 		 
-		// print_r($arrayXmlElement);
+		// print_r($arrayEl);
 		 
 		 
 		 $elements = Element::find()
-		->where(['xmlcode' =>$arrayXmlElement ]) 
+		->where(['xmlcode' =>$arrayXmlElement]) 
 		->orderBy("name")			 
 		//->where(['idp' =>ltrim(  $startCode )])
 		->all();
@@ -74,7 +95,9 @@ class AkciiModel extends Model
 		 
 		 foreach($elements as $element){
 			$idArray=Array();
-			//echo $element->id;
+			echo $element->id.'<br>';
+		
+			
 			
 			//we do not make the tree in this function
 			// echo 'ffff <br>';
@@ -89,9 +112,9 @@ class AkciiModel extends Model
 			$this->arrElements[]=$idArray;
 		};
 		 
-		 
-		 
-	 //print_r(   $this->arrElements);
+		 	echo '<br>';
+		 	echo count( $elements);
+	 print_r(   $this->arrElements);
 		 
 	 }
 	 
@@ -325,6 +348,10 @@ class AkciiModel extends Model
 			
 			
 		}
+	
+		
+		
+		
 		
 		
 
