@@ -33,6 +33,7 @@ use app\models\Usersessitions;
 
 
 use app\models\AboutModel;
+use app\models\AkciiModel;
 use app\models\DeliveryModel;
 
 class SiteController extends Controller
@@ -86,6 +87,16 @@ class SiteController extends Controller
      */
     public function actionIndex()	
     {
+		$akciiModel=new AkciiModel();
+		
+		$akciiModel->FillarrElements();
+		$akciiModel->fillImageForElementArray();		
+		$akciiModel->fillPriceForElementArray();		
+		$akciiModel->fillQuantityForElementArray();
+		
+		
+		
+		
 		
 		$catalogModel=new CatalogModel();
 		 
@@ -113,7 +124,7 @@ class SiteController extends Controller
 		
 		
 		
-        return $this->render('index',['catalogModel' => $catalogModel,]);
+        return $this->render('index',['catalogModel' => $catalogModel, 'akciiModel'=> $akciiModel]);
     }
 
     /**
