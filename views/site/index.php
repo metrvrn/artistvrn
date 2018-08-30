@@ -16,7 +16,7 @@ $this->title = LokalFileModel::getDataByKeyFromLocalfile('local_data_nameComppan
     <div class="col-xs-12 col-md-9">
             <?php foreach($akciiModel->arrElements as $index => $item) : ?>
                 <div class="index-product-cart">
-                    <a class="index-product-cart__link">
+                    <a href="<?=Url::to(['catalog/index', 'section' => 'non', 'element' => $item['id'], 'page' => 0, 'view' => 'cart'])?>" class="index-product-cart__link">
                         <div class="index-product-cart__title-wrap">
                             <span class="index-product-cart__title"><?=$item['name']?></span>
                         </div>
@@ -44,7 +44,6 @@ $this->title = LokalFileModel::getDataByKeyFromLocalfile('local_data_nameComppan
             </p>
             <p>
             Минимальная сумма заказа 5000 рублей по оптовым ценам. Бесплатная доставка по городу Воронежу от 5000 рублей по оптовым ценам, в другие населенные пункты от 10000 рублей по оптовым ценам по графику доставки.
-  <p>
             Отгрузка в любую точку России транспортными компаниями или экспресс почтой от 10000 рублей за счет покупателя, от 25000 рублей - бесплатная в любую точку России.
             </p>
         </p>
