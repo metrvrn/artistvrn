@@ -13,6 +13,11 @@ use app\widgets\HeaderInfo;
 use app\widgets\FooterInfo;
 AppAsset::register($this);
 
+$addButtonLink = LokalFileModel::getDataByKeyFromLocalfile('additional_button_link');
+$addButtonLink = !empty($addButtonLink) ? $addButtonLink : false;
+$addButtonText = LokalFileModel::getDataByKeyFromLocalfile('additional_button_text');
+$addButtonText = !empty($addButtonText) ? $addButtonText : false;
+
 $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
@@ -42,6 +47,11 @@ $this->beginPage() ?>
                 </div>
             </div>
         </div>
+        <?php if($addButtonLink) : ?>
+            <a href="<?=$addButtonLink?>" class="header-additional-button">
+                <span><?=$addButtonText?></span>
+            </a>  
+        <?php endif; ?>
     </div>
     <?php NavBar::begin([
             'brandLabel' => 'Магазин "Художник" на оптовой базе "Мэтр"',

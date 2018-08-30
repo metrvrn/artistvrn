@@ -190,8 +190,23 @@ a.desc:after {
     border-radius: 5px;
 }
 .header-background-wrapper{
+    position: relative;
     height: 250px;
     background-size: cover;
+}
+.header-additional-button{
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+    padding: 8px 4px;
+    font-size: 1.7rem;
+    text-decoration: none;
+}
+.header-additional-button:hover{
+    text-decoration: none;
+    color: transparent;
 }
 nav.navbar{
     margin-bottom: 0;
