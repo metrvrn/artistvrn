@@ -332,6 +332,7 @@ class AdminController extends Controller
 	
            $model_admin=new AdminModel();
 		   $model_admin->Setakciifromfile();
+		   	   $model_admin->SetIdForAkcii();
 		   
 		   
 		   

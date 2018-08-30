@@ -1121,8 +1121,134 @@ class AdminModel extends Model
 	
 	
 	
+	 public function Setakciifromfile()
+     {
+		 
+		  $fp = fopen($_SERVER['DOCUMENT_ROOT'].'/upload/1cakcii.csv', "r"); // Открываем файл в режиме чтения
+					
+					
+								$count=0;
+								$mes="";
+
+								 if ($fp) 
+								  {$mes='file is '.'<br>';
+									 while (!feof($fp))
+									 {      $count=$count+1; //if($count==20){break;};
+									 $mytext = fgets($fp, 999);
+									 
+								
+									 $ar=str_getcsv($mytext,";");
+									 
+										 $this->procceccStringAkciiFromFile($ar); 
+
+									  $mes=$mes.'  '.$ar[0].'<br>';    
+									 
+									
+									 }
+								   }
+								  else $mes="Ошибка при открытии файла";
+								  
+								  
+								  fclose($fp);
+					 
+					 
+					// $this->MakeSections();
+					 
+					 
+					 //$this->fillidpInSectionTable();
+					 
+					 
+					  $this->message=$this->message.$mes;
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+	 }
 	
 	
+	private function  procceccStringAkciiFromFile($ar){
+		
+		$elementAkcii=Akcii::find()
+		->where(['xmlcode'=>$ar[0]])
+		->one();
+		
+		if($elementAkcii){
+			
+			 $this->message=$this->message.' find element ';
+			
+			
+		}else{
+			
+			$this->message=$this->message.' make element ';
+			$akcii=new Akcii();
+			
+			$akcii->xmlcode=$ar[0];
+			$akcii->save();
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+		
+		public function SetIdForAkcii(){
+			
+			$elementsAkcii=Akcii::find()
+			//->where([''=>])
+			->all();
+			
+			
+			if($elementsAkcii){
+				
+				foreach($elementsAkcii as $elementAkcii){
+					
+					
+				$element=Element::find()
+				->where(['xmlcode'=>$elementAkcii->xmlcode])
+				->one();
+				
+				if($element){
+					
+					$elementAkcii->elementid=$element->id;
+					$elementAkcii->save();
+					
+					
+					
+					
+				}
+					
+					
+					
+					
+				}
+				
+				
+				
+				
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+		}
 	
      
 }

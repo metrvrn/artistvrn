@@ -262,6 +262,31 @@ use yii\base\Model;
 					$this->order->save();
 		  
 	  }
+	  
+	  
+	  
+	  public function Bitrixgetxmlcode(){
+		  
+		  $this->message='Bitrixgetxmlcode';
+		  
+		  $elements=Element::find()
+		  ->where(['issection'=>0])
+		  ->all();
+		  
+		  
+		  if( !$elements){return;  }
+		  
+		  foreach($elements as $element){
+			  
+			  $this->message=$this->message.$element->xmlcode.'<br>';
+			  
+		  }
+		  
+		  
+		  
+		  
+		  
+	  }
      
     }
 	
