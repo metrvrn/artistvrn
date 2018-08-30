@@ -55,7 +55,7 @@ class FooterInfo extends \yii\bootstrap\Widget
 
     public function init()
     {
-        foreach($this->sections as &$s){
+        foreach($this->sections as $name => &$s){
             $data = null;
             // if(is_array($s['name'])){
             //     foreach($s['name'] as $name){
@@ -68,7 +68,9 @@ class FooterInfo extends \yii\bootstrap\Widget
             //     $data = LokalFileModel::getDataByKeyFromLocalfile($s['name']);
             // }
             $data = LokalFileModel::getDataByKeyFromLocalfile($s['name']);
-            if(!isset($data) or $data == '' or $data == false) continue;
+            if(!isset($data) or $data == '' or $data == false){
+                unset($this->sections[$name]);
+            }
             $s['text'] = (string) $data;
             if(isset($s['permanentLink'])){
                 $s['link'] = Url::toRoute($s['permanentLink']);
