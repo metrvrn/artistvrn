@@ -51,7 +51,7 @@ class AkciiModel extends Model
 		 $arrayEl=[];
 		 $arrayXmlElement=[];
 		 $k=0;
-		 while(count($arrayXmlElement)<13){
+		 while(count($arrayXmlElement)<12){
 			   
 			  
 			  $i=rand(0,45);
