@@ -133,6 +133,10 @@ a.desc:after {
     height: 6rem;
     font-weight: 700;
 }
+.navbar-brand{
+    float: none !important;
+    display: block;
+}
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus{
@@ -737,13 +741,19 @@ nav.navbar{
 @media only screen and (min-width: 450px) {
 	.index-product-cart {
 		width: 50%;
-	}
+    }
 }
 
 @media only screen and (min-width: 768px) {
 	.index-product-cart {
 		width: 33.333%;
 	}
+}
+
+@media only screen and (max-width: 1000px){
+    .header-description{
+        display: none !important;
+    }
 }
 
 @media only screen and (min-width: 1000px) {
@@ -769,5 +779,21 @@ nav.navbar{
     .col-lg-5ths {
         width: 20%;
         float: left;
+    }
+}
+
+@media (max-width: 768px){
+    .navbar-default .navbar-brand{
+        height: 8rem;
+    }
+    .header-additional-button{
+        width: 368px;
+        left: calc(50% - 188px);
+    }
+}
+
+@media (max-width: 1000px){
+    .header-background-wrapper{
+        height: 170px;
     }
 }
