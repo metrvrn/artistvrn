@@ -59,7 +59,7 @@ $this->title = $item['name'];
 							<div class="detail-image">
 								<?php
 									if($item['imaged'] !== 'not'){
-										$image = 'https://metropt.ru/upload/'.$item['imaged'];
+										$image = 'http://database.artistvrn.ru/upload/'.$item['imaged'];
 									}
 									else{
 										$image = $_SERVER['HOSTNAME'].'/images/no-image-bg.jpg';

@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<?php foreach($model->basketArray as $item) : ?>
 					<tr>
 						<td class="order-detail__picture-td">
-							<img src="https://metropt.ru/upload/<?=$item['image']?>" alt="Картинка товара" class="order-detail__picture"></td>
+							<img src="http://database.artistvrn.ru/upload/<?=$item['image']?>" alt="Картинка товара" class="order-detail__picture"></td>
 						<td>
 							<?=$item['name']?>
 						</td>

@@ -32,8 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
 					<?php foreach($model->basketArray as $item) : ?>
 						<tr>
 							<td>
-								<?php $img = isset($item['image']) ? "https://metropt.ru/upload/".$item['image'] : '/images/no-image.jpg';
-										$imgd = isset($item['imagd']) ? "https://metropt.ru/upload/".$item['imagd'] : '';
+								<?php $img = isset($item['image']) ? "http://database.artistvrn.ru/upload/".$item['image'] : '/images/no-image.jpg';
+										$imgd = isset($item['imagd']) ? "http://database.artistvrn.ru/upload/".$item['imagd'] : '';
 								?>
 								<img data-big="<?=$imgd;?>" class="img-responsive center-block basket-product-image" src="<?=$img;?>" alt="">
 							</td>

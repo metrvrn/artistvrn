@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<?php foreach($model->basketArray as $item) : ?>
 					<tr>
 						<td>
-							<?php $img = isset($item['image']) ? "https://metropt.ru/upload/".$item['image'] : '/images/no-image.jpg' ?>
+							<?php $img = isset($item['image']) ? "http://database.artistvrn.ru/upload/".$item['image'] : '/images/no-image.jpg' ?>
 							<img class="img-responsive center-block" src="<?=$img;?>" alt="">
 						</td>
 						<td><?=$item['name']?></td>

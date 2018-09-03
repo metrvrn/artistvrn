@@ -21,7 +21,7 @@ $this->title = LokalFileModel::getDataByKeyFromLocalfile('local_data_nameComppan
                             <span class="index-product-cart__title"><?=$item['name']?></span>
                         </div>
                         <div class="index-products-cart__image-wrap">
-                            <?php $img = "http://metropt.ru/upload/".$item['imaged'];?>
+                            <?php $img = "http://database.artistvrn.ru/upload/".$item['imaged'];?>
                             <img class="image-responsive index-products-cart__image" src="<?=$img?>" alt="">
                         </div>
                         <div class="index-products-cart__price-wrap">

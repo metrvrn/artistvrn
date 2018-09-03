@@ -101,7 +101,7 @@ if($sectionsCount > 1){
 									<i class="fas fa-search-plus"></i>
 								</div>
 							<?php endif; ?>
-							<?php $img = ($item['image'] !== 'not') ? "https://metropt.ru/upload/".$item['image'] : '/images/no-image.jpg' ?>
+							<?php $img = ($item['image'] !== 'not') ? "http://database.artistvrn.ru/upload/".$item['image'] : '/images/no-image.jpg' ?>
 							<img class="img-responsive center-block prodcut-cart__image" src="<?=$img;?>" alt="">
 							<div class="product-cart__code">
 									Код: <?=$item['code'];?>
