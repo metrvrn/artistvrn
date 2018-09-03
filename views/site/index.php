@@ -33,6 +33,8 @@ $this->title = LokalFileModel::getDataByKeyFromLocalfile('local_data_nameComppan
                 </div>
             <?php endforeach; ?>
     </div>
+</div>
+<div class="row">
     <div class="col-md-offset-3 col-xs-12 col-md-9">
         <p>
                 Магазин <b>“Художник”</b>  на оптовой базе <b>“Мэтр”</b>  г. Воронеж ул. Еремеева - 17 тел (473) 246-07-07 приглашает всех за товарами для художественного творчества. 
