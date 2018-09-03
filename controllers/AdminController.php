@@ -70,7 +70,7 @@ class AdminController extends Controller
 		$catalogModel->fillQuantitypageforqurientsection();		   
 	    $catalogModel->fillarrElements();
 		//fillElementIdArray
-		  $catalogModel->fillElementIdArray();
+		$catalogModel->fillElementIdArray();
 		
 		
 		
@@ -354,6 +354,31 @@ class AdminController extends Controller
 	
 	}
 	
+	
+		public function actionKillakciinoimage(){
+		
+	
+           $model_admin=new AdminModel();
+		   $model_admin->Killakciinoimage();
+		     
+		   
+			$this->layout = 'ajaxl';	
+		
+		      Yii::$app->cache->flush(); 
+		 
+		      $model=new AjaxModel();
+		  
+		     $model->message="actionSetakciifromfile ".$model_admin->message;
+		  
+			
+		   return $this->render('ajaxv', [
+         'model' => $model,
+			]);
+			 
+		
+
+	
+	}
 	
 	
 	

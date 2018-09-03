@@ -82,7 +82,8 @@ class m180606_143718_create_user_tableMainTable extends Migration
 			 $this->createTable('image', [
             'id' => $this->primaryKey(),
 			'type'=>$this->integer(),
-			'elementid'=> $this->integer(),			 
+			'elementid'=> $this->integer(),
+			'xmlcode'=> $this->string(),
 			'filed'=> $this->string(),
 			'filep'=> $this->string(),
 			'index1'=>$this->integer(),
