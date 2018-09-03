@@ -1173,6 +1173,22 @@ class AdminModel extends Model
 	
 	private function  procceccStringAkciiFromFile($ar){
 		
+		
+		$element=Element::find()
+		->where(['xmlcode'=>$ar[0]])
+		->one();
+		
+		if(!$element){return;}
+		
+		
+		
+	$image=Image::find()
+	->where(['elementid'=>!$element-id])
+	->one();
+	
+		if(!$image){return;}
+		
+		
 		$elementAkcii=Akcii::find()
 		->where(['xmlcode'=>$ar[0]])
 		->one();
@@ -1221,15 +1237,15 @@ class AdminModel extends Model
 				->where(['xmlcode'=>$elementAkcii->xmlcode])
 				->one();
 				
-				if($element){
-					
-					$elementAkcii->elementid=$element->id;
-					$elementAkcii->save();
-					
-					
-					
-					
-				}
+					if($element){
+						
+						$elementAkcii->elementid=$element->id;
+						$elementAkcii->save();
+						
+						
+						
+						
+					}
 					
 					
 					
@@ -1251,6 +1267,46 @@ class AdminModel extends Model
 		}
 	
      
+	 
+	 
+	public function  Killakciinoimage(){
+		
+		$elementsAkcii=Akcii::find()
+		->all();
+		
+		if(!$elementsAkcii){return;}
+		
+		//$this->message=$this->message.'after element<br> ';
+		
+		
+		foreach($elementsAkcii as $elementAkcii){
+			
+			
+			$image=Image::find()
+			->where(['elementid'=>$elementAkcii->elementid])
+			->one();
+			
+			if(!$image){    
+				
+				$this->message=$this->message.' delete element<br> ';
+				$elementAkcii->delete();
+			}else{
+				
+					$this->message=$this->message.' find image <br>';
+				
+			}
+			
+			
+			
+		}
+		 
+		
+		
+		
+		
+	}
+	 
+	 
 }
 
 
