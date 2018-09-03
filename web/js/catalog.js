@@ -70,7 +70,7 @@ function handleInputs(w)
 function showDetailImage(srcElem)
 {	
     if(srcElem.dataset.full === 'not') return;
-	var url = 'https://metropt.ru/upload/'+srcElem.dataset.full;
+	var url = 'http://database.artistvrn.ru/upload/'+srcElem.dataset.full;
 	var imgWrapper = document.createElement('div');
 	//need for vertical align of image
 	var imgWrapperHelper = document.createElement('span');

@@ -111,8 +111,8 @@ if($sectionsCount > 1){
 									<tr>
 										<td>
 											<?php
-												$img = ($item['image'] !== 'not') ? "https://metropt.ru/upload/".$item['image'] : '/images/no-image.jpg';
-												$bigimage = ($item['imaged'] !== 'not') ? "https://metropt.ru/upload/".$item['imaged'] : '';	
+												$img = ($item['image'] !== 'not') ? "http://database.artistvrn.ru/upload/".$item['image'] : '/images/no-image.jpg';
+												$bigimage = ($item['imaged'] !== 'not') ? "http://database.artistvrn.ru/upload/".$item['imaged'] : '';	
 											?>
 											<img data-bigimage="<?=$bigimage;?>" class="img-responsive center-block catalog-table__image" src="<?=$img;?>" alt="">
 										</td>
