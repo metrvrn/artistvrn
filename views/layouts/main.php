@@ -30,6 +30,7 @@ $this->beginPage() ?>
     <?= Html::csrfMetaTags() ?>
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&load=Geolink" type="text/javascript"></script>
     <title><?= Html::encode($this->title) ?></title>
+    <meta name="description" content="Магазин 'Художник' предалагает товары для художественного творчества и рукоделия">
     <?php $this->head() ?>
 </head>
 <body>
