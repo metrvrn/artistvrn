@@ -41,11 +41,15 @@ $this->params['breadcrumbs'][] = trim($model->arrElements[0]['name']);
 //current product
 $item = $model->arrElements[0];
 $this->title = $item['name'];
+//remove unnecessary product properties
+$removablePropertiesId = [46, 50, 51, 57, 177, 178];
+
 ?>
+
 <div class="row"> 
 	<div class="col-xs-12 col-md-3">
 		<?=CatalogMenu::widget(['model' => $model])?>
-  	</div>
+	  </div>
 		<div class="product-detail__wrapper">
 		<div class="col-xs-12 col-md-9">
 		<div class="container-flud">
@@ -70,11 +74,14 @@ $this->title = $item['name'];
 					</div>
 					</div>
 					<div class="col-md-6">
+						<div class="detail-description">
+							<span><?=$model->elementDescription?></span>
+						</div>
 						<?php if($model->arrayDataForCurientElement) : ?>
 							<table class="table table-bordered">
 								<tbody>
 									<?php foreach($model->arrayDataForCurientElement as $prop) : ?>
-										<?php if($prop['PROPERTY_ID'] == '178') continue; ?>
+										<?php if(in_array($prop['PROPERTY_ID'], $removablePropertiesId)) continue; ?>
 										<tr>
 											<td><?=$prop['NAME_PROPERTY']?></td>
 											<td><?=$prop['VALUE']?></td>
@@ -84,8 +91,13 @@ $this->title = $item['name'];
 							</table>
 						<?php endif; ?>
 						<div class="detail-bottom">
-							<div class="detail-quantity">
-								<b>Остатки: <span id="available"><?=$item['quantity']?></span></b>
+							<div class="clearfix">
+								<div class="detail-quantity">
+									<b>Остатки: <span id="available"><?=$item['quantity']?></span></b>
+								</div>
+								<div class="detail-price">
+										<b>Цена: <?=$item['price']?> &#8381;</b>
+								</div>
 							</div>
 							<div id="detailControl" class="detail-control">
 								<div class="detail-control__btn-wrapper clearfix">
