@@ -526,6 +526,17 @@ nav.navbar{
     width: 50%;
     margin: 0 auto;
 }
+.detail-quantity{
+    float: left;
+    font-size: 2rem;
+}
+.detail-price{
+    float: right;
+    font-size: 2rem;
+}
+.detail-description{
+    margin-bottom: 24px;
+}
 .detail-control__btn-wrapper{
     margin-bottom: 24px;
     height: 32px;

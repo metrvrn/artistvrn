@@ -51,7 +51,9 @@ class CatalogModel extends Model
 	public   $arrElementsImage;
 	public   $arrElementsImageDetail;
 	public   $arrElementsPrice; 
-	public   $arrElementsQuantity; 
+	public   $arrElementsQuantity;
+
+	public $elementDescription;
 	
 	
 	public $arrayDataForCurientElement;
@@ -1059,8 +1061,10 @@ class CatalogModel extends Model
 					
 					 
 					//echo 	$html;
-					
-					$arrPropData=json_decode($html); 
+					$resultArr = json_decode($html, true);
+					// print_r($resultArr);
+					$arrPropData = $resultArr['properties'];
+					$this->elementDescription = $resultArr['detail_text'];
 					 
 				//print_r($arrPropData);
 				
@@ -1069,14 +1073,13 @@ class CatalogModel extends Model
 						foreach($arrPropData as $PropData){
 					 
 					 $intArray=[];
-					 $intArray['PROPERTY_ID']=$PropData->PROPERTY_ID;
-					 $intArray['NAME']=$PropData->NAME;
-				     $intArray['CODE']=$PropData->CODE;
-					 $intArray['VALUE']=$PropData->VALUE;
+					 $intArray['PROPERTY_ID']=$PropData['PROPERTY_ID'];
+					 $intArray['NAME']=$PropData['NAME'];
+				     $intArray['CODE']=$PropData['CODE'];
+					 $intArray['VALUE']=$PropData['VALUE'];
 					 
 					 
-					 $intArray['NAME_PROPERTY']=$this->arrPropery[$PropData->PROPERTY_ID]['NAME'];
-					 ;
+					 $intArray['NAME_PROPERTY']=$this->arrPropery[$PropData['PROPERTY_ID']]['NAME'];
 					 
 					 
 					$this->arrayDataForCurientElement[]=$intArray;
