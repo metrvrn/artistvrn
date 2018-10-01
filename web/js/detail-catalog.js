@@ -8,6 +8,8 @@ var qInput = document.getElementById('quantityInput');
 var oldValue = Number(qInput.dataset.oldvalue);
 var basketBtn = document.getElementById('addBasketBtn');
 var available = Number(document.getElementById('available').innerText);
+var basketBtnText = document.getElementById('basketBtnText');
+var basketBtnSpiner = document.getElementById('basketBtnSpiner');
 
 detailControl.addEventListener('click', function(e){
     var target = e.target;
@@ -85,14 +87,16 @@ function addBasketBtn()
 
 function btn_catalog_add_to_basket(id, q)
 {
+    basketBtnText.style.display = 'none';
+    basketBtnSpiner.style.display = 'block';
 	var xhttp = new XMLHttpRequest();
 	var dataF = new FormData();
 	dataF.append('elementid', id);
 	dataF.append('quanty', q);
 	xhttp.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200) {
-		console.log("Response text:------------------");
-		console.log(this.responseText);
+        basketBtnText.style.display = 'block';
+        basketBtnSpiner.style.display = 'none';
 		}
 	};
   	xhttp.open("POST", addToBasketUrl, true);

@@ -646,6 +646,8 @@ nav.navbar{
 .catalog-table__quantity-btn{
     float: left;
     display: block;
+    min-height: 36px;
+    width: 65%;
     padding: 8px 6px;
     border: none;
     transition: all 0.2s ease;
@@ -653,6 +655,9 @@ nav.navbar{
 .catalog-table__quantity-btn:hover{
     text-decoration: none;
     transition: all 0.2s ease;
+}
+.catalog-table__quantity-btn:focus{
+    outline: none;
 }
 .catalog-table__image{
     cursor: zoom-in;
@@ -745,6 +750,20 @@ nav.navbar{
     background-size: cover;
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
+}
+.basket-spiner{
+    animation-name: basketButtonSpiner;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+@keyframes basketButtonSpiner{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
 }
 @media only screen and (min-width: 450px) {
 	.index-product-cart {

@@ -114,7 +114,8 @@ if($sectionsCount > 1){
 									<i class="fas fa-plus"></i>
 								</button>
 								<button class="product-cart__add-basket">
-									<i class="fas fa-cart-plus"></i>
+									<i id="basketBtnSpiner" class="fas fa-spinner basket-spiner"></i>
+									<i id="basketBtnIcon" class="fas fa-cart-plus"></i>
 								</button>
 							</div>
 						</div>

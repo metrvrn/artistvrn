@@ -126,21 +126,26 @@ function minusBtn(controlElem)
 
 function addBasket(controlElem)
 {
+	window.test = controlElem;
 	var id = Number(getElementID(controlElem));
 	var q = Number(getInput(controlElem).value);
-	btn_catalog_add_to_basket(id, q)
+	var spiner = controlElem.querySelector('#basketBtnSpiner');
+	var icon = controlElem.querySelector('#basketBtnIcon');
+	btn_catalog_add_to_basket(id, q, spiner, icon)
 }
 
-function btn_catalog_add_to_basket(id, q)
+function btn_catalog_add_to_basket(id, q, spiner, icon)
 {
+	icon.style.display = 'none';
+	spiner.style.display = 'block';
 	var xhttp = new XMLHttpRequest();
 	var dataF = new FormData();
 	dataF.append('elementid', id);
 	dataF.append('quanty', q);
 	xhttp.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200) {
-		console.log("Response text:------------------");
-		console.log(this.responseText);
+		icon.style.display = 'block';
+		spiner.style.display = 'none';
 		}
 	};
   	xhttp.open("POST", addToBasketUrl, true);
