@@ -128,7 +128,10 @@ if($sectionsCount > 1){
 											<div class="catalog-table__input-group clearfix">
 												<input type="hidden" class="catalog-table__available-input" value="<?=$item['quantity'];?>">
 												<input data-oldValue=1 data-available="<?=$item['quantity'];?>" type="text" value=1 class="catalog__quantity-input">
-												<button data-id="<?=$item['id'];?>" class="catalog-table__quantity-btn">Добавить</button>
+												<button data-id="<?=$item['id'];?>" class="catalog-table__quantity-btn">
+													<i id="basketBtnSpiner" style="display: none" class="fas fa-spinner basket-spiner"></i>
+													<span id="basketBtnText" class="catalog-table__quantity-btn-text">Добавить</span>
+												</button>
 											</div>
 										</td>
 									</tr>

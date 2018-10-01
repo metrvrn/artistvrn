@@ -41,22 +41,33 @@
         if(e.target.value === "") e.target.value = e.target.dataset.oldvalue;
     })
     window.addEventListener('click', function(e){
-        if(e.target.className.indexOf('catalog-table__quantity-btn') < 0) return;
-        var quantity = e.target.parentElement.getElementsByClassName('catalog__quantity-input')[0].value;
-        var id = e.target.dataset.id;
-        btn_catalog_add_to_basket(id, quantity);
+        var className = e.target.className;
+        if(className.indexOf('catalog-table__quantity-btn') > 0 || className.indexOf('catalog-table__quantity-btn-text' > 0)){
+            target = e.target;
+            if(className.indexOf('catalog-table__quantity-btn-text' > 0)){
+                target = e.target.parentElement;
+            }
+            var quantity = target.parentElement.getElementsByClassName('catalog__quantity-input')[0].value;
+            var id = target.dataset.id;
+            var spiner = target.querySelector('#basketBtnSpiner');
+            var text = target.querySelector('#basketBtnText');
+            btn_catalog_add_to_basket(id, quantity, spiner, text);
+        };
+
 
     })
-    function btn_catalog_add_to_basket(id, q)
+    function btn_catalog_add_to_basket(id, q, spiner, text)
     {
+        text.style.display = 'none';
+        spiner.style.display = 'block';
         var xhttp = new XMLHttpRequest();
         var dataF = new FormData();
         dataF.append('elementid', id);
         dataF.append('quanty', q);
         xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            console.log("Response text:------------------");
-            console.log(this.responseText);
+            spiner.style.display = 'none';
+            text.style.display = 'block';
             }
         };
         xhttp.open("POST", addToBasketUrl, true);

@@ -106,7 +106,12 @@ $removablePropertiesId = [46, 50, 51, 57, 177, 178];
 									<button id="plusBtn" class="detail-control_btn detail-control__btn-plus"><i class="fas fa-plus"></i></button>
 								</div>
 								<div class="detail-controll__basket-wrappper">
-									<button id="addBasketBtn" class="detail-control__basket-btn">Добавить в корзину</button>
+									<button id="addBasketBtn" class="detail-control__basket-btn">
+										<div id="basketBtnSpiner" style="display: none" class="detail-control__basket-btn-spiner"></div>
+										<div id="basketBtnText" class="detail-control__basket-btn-text">
+											Добавить в корзину
+										</div>	
+									</button>
 								</div>
 							</div>
 						</div>
