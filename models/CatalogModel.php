@@ -285,7 +285,9 @@ class CatalogModel extends Model
 			$idArray[ 'index1']= $element->index1;
 			$idArray[ 'index2']= $element->index2;
 			$idArray[ 'idp']= $element->idp;
-			
+			$idArray[ 'price']= $element->price;
+			$idArray[ 'quantity']= $element->quantity;
+			$idArray[ 'weight']= $element->weight;
 			
 			$this->arrElements[]=$idArray;
 		};

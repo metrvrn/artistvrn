@@ -43,7 +43,7 @@ class CatalogController extends Controller
 			
 			
 		$model->view=$viewForControler;	
-			
+			 
 		}
 		
 		
@@ -62,9 +62,9 @@ class CatalogController extends Controller
 		$model->fillQuantitypageforqurientsection();	
 		$model->setVisibleForCurienSection();
 		$model->fillarrElements();
-		$model->fillImageForElementArray();		
-		$model->fillPriceForElementArray();		
-		$model->fillQuantityForElementArray();
+		$model->fillImageForElementArray(); 		
+		//$model->fillPriceForElementArray();		
+		//$model->fillQuantityForElementArray();
 		 
 		$model->fillArrProperyMetr();
 		
