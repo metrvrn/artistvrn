@@ -122,6 +122,7 @@ class m180606_143718_create_user_tableMainTable extends Migration
 			'idp' => $this->integer(),
 			'quantity' => $this->float(),
 			'price' => $this->float(),
+			'weight'=>$this->float(),
 			
 			'issection' => $this->boolean(),
 			'index1' => $this->integer(),
