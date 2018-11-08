@@ -97,8 +97,8 @@ class CatalogController extends Controller
 			
 			
 		$model->fillImageForElementArray();		
-		$model->fillPriceForElementArray();		
-		$model->fillQuantityForElementArray();	
+		//$model->fillPriceForElementArray();		
+		//$model->fillQuantityForElementArray();	
 
 		
 			
