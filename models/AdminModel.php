@@ -27,6 +27,7 @@ class AdminModel extends Model
     public $message;
 	
 	public $arrayLastSection;
+	public $NameOf1Cfile;
 	
     
 
@@ -415,12 +416,15 @@ class AdminModel extends Model
 									 
 										 $this->procceccArrayOfStingFromFileArtist($ar); 
 
-									  $mes=$mes.'  '.$ar[0].'<br>';    
+									  //$mes=$mes.'  '.$ar[0].'<br>';    
 									 
 									
 									 }
 								   }
 								  else $mes="Ошибка при открытии файла";
+								  
+								  
+								  $mes=$mes.$count.'<br>'; 
 								  
 								  
 								  fclose($fp);
@@ -679,8 +683,8 @@ class AdminModel extends Model
 											->where(['elementid' =>$element->id])
 											->one();
 											 if($price){
-														//$mes=$mes.'finde price'.$ar[10].'<br>';
-														$price->price=floatval( str_replace(' ','', str_replace(',','.',$ar[12])));
+														$mes=$mes.'finde price'.$ar[10].'  '.$element->xmlcode.'  '.$ar[12].'<br>';
+														$price->price=floatval( str_replace(',','.',$ar[12]));
 														$price->type=2;
 														$price->save();
 
@@ -706,7 +710,7 @@ class AdminModel extends Model
 								 
 								 
 								 
-								 //$this->message=$this->message.$mes;
+								 $this->message=$this->message.$mes;
 			 
 		 }
 	 
@@ -1305,6 +1309,115 @@ class AdminModel extends Model
 		
 		
 	}
+	 
+	 public function  procceccArrayOfStingFrom1Cfile($ar){
+		  // 	$this->message=$this->message.' procceccArrayOfStingFrom1Cfile 1   '."\n\r"; 
+     if(!isset($ar[0])){return;};
+	 
+	 
+	 	//$this->message=$this->message.' procceccArrayOfStingFrom1Cfile 2   '."\n\r".$ar[6]."\n\r".$ar[7]."\n\r".$ar[8]."\n\r";
+	 
+		$element = Element::find()
+    ->where(['xmlcode' =>ltrim($ar[0])])
+    ->one();
+	
+	   if($element){ 
+		       
+			   //	$this->message=$this->message.' finded  element '.$ar[1];;
+			   
+			  //quantity
+			  $element->active=false;
+              if(ltrim($ar[6])=="not"){ $this->message=$this->message.' quantity  not '."\n\r";    }else{		//$this->message=$this->message.' quantity  is  '.$ar[6]."\n\r";;
+				  $element->quantity=floatval(  ltrim($ar[6])); $element->active=true; }
+			  //weight
+			  if(ltrim($ar[7])=="not"){$element->weight=0;   }else{$element->weight=floatval(  ltrim($ar[7]) );}	 
+			  //price
+			  if(ltrim($ar[8])=="not"){ $element->price=0;    }else{$element->price=floatval(  ltrim($ar[8]) );}	 
+			  
+
+			  $element->save();
+		 
+		
+		
+	   }else{ 
+		   
+		 	$this->message=$this->message.' else make element ='.$ar[1];;
+		   
+		   	$el=new Element();
+
+			  
+		   
+			
+				$el->code=ltrim($ar[1]);
+				$el->xmlcode=ltrim($ar[0]);;
+				$el->name= ltrim($ar[5]);
+				$el->artikul=ltrim($ar[4]);;
+				$el->xmlcodep =ltrim($ar[2]);
+				$el->issection =ltrim(0); 	
+				$el->active=false;
+				$el->idp ='';
+				
+				  //quantity
+			  $el->active=false;
+              if(ltrim($ar[6])=="not"){}else{	 
+				  $el->quantity=floatval(  ltrim($ar[6])); $el->active=true; }
+			  //weight
+			  if(ltrim($ar[7])=="not"){$el->weight=0;   }else{$el->weight=floatval(  ltrim($ar[7]) );}	 
+			  //price
+			  if(ltrim($ar[8])=="not"){ $el->price=0;    }else{$el->price=floatval(  ltrim($ar[8]) );}	 
+			  
+			
+
+				$el->save();
+		   
+		   
+	   }
+	
+ 
+ 
+		}
+	 
+	 public function  LoadeNomFrom1Cfile(){
+		 
+		   $fp = fopen($this->NameOf1Cfile, "r"); // Открываем файл в режиме чтения
+					
+					
+								$count=0;
+							//	$mes=" LoadeNomFrom1Cfile";
+
+								 if ($fp) 
+								  {$mes=$mes.'  file is '.'<br>';
+									 while (!feof($fp))
+									 {      $count=$count+1; //if($count==20){break;};
+									       $mytext = fgets($fp, 999);
+									 
+								
+									 $ar=str_getcsv($mytext,";");
+									 
+										 $this->procceccArrayOfStingFrom1Cfile($ar); 
+
+									  //$mes=$mes.'  '.$ar[0].'<br>';    
+									 
+									
+									 }
+								   }
+								  else //$mes="Ошибка при открытии файла";
+								  
+								  
+								 // $mes=$mes.$count.'<br>'; 
+								  
+								  
+								  fclose($fp);
+					 
+			 
+					 
+					 
+					 // $this->message=$this->message.$mes;
+		 
+		 
+		 
+		 
+	 }
 	 
 	 
 }

@@ -29,6 +29,7 @@ use app\models\ AddLogingModel;
 
 use app\models\Usersessitions; 
 use app\models\Image;
+use yii\web\UploadedFile;
 
 class AdminController extends Controller
 {
@@ -51,6 +52,15 @@ class AdminController extends Controller
      *
      * @return string
      */
+	 
+	 
+	  public function beforeAction($action)
+       { $this->enableCsrfValidation = false; 
+	   return parent::beforeAction($action);
+	   }
+	 
+	 
+	 
     public function actionIndex()
     {
 		
@@ -329,7 +339,7 @@ class AdminController extends Controller
 	
 	public function actionSetakciifromfile(){
 		
-	
+	       
            $model_admin=new AdminModel();
 		   $model_admin->Setakciifromfile();
 		   	   $model_admin->SetIdForAkcii();
@@ -380,6 +390,60 @@ class AdminController extends Controller
 	
 	}
 	
+	
+	
+		public function actionUploadenomfrom1c(){
+		
+		
+		   $this->enableCsrfValidation  = false;
+		   
+	        $this->layout = 'ajaxl';
+         
+
+		  // $model_admin=new AdminModel();
+		    $request = Yii::$app->request;
+	   
+	      if ($request->isPost) {  
+	  
+	       $rec=$request->bodyParams;
+
+     
+	
+	       $f=UploadedFile::getInstanceByName("namefile")   ;
+	      $f->saveAs($_SERVER['DOCUMENT_ROOT'].'/upload/uploadenomfrom1c.csv');
+	   
+           $model_admin=new AdminModel();
+		   $model_admin->NameOf1Cfile=$_SERVER['DOCUMENT_ROOT'].'/upload/uploadenomfrom1c.csv';
+		   
+		   $model_admin->LoadeNomFrom1Cfile(); 
+		   
+		   
+	   
+	  };
+		    
+
+
+			
+		   
+			
+			
+				
+		
+		     
+		 
+		    $model=new AjaxModel();
+		  
+		     $model->message= $model_admin->message;
+		  
+			
+		   return $this->render('ajaxv', [
+         'model' => $model,
+			]);
+			 
+		
+
+	
+	}
 	
 	
 }
