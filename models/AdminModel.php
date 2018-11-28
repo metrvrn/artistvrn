@@ -27,6 +27,7 @@ class AdminModel extends Model
     public $message;
 	
 	public $arrayLastSection;
+	public $NameOf1Cfile;
 	
     
 
@@ -158,13 +159,28 @@ class AdminModel extends Model
 		 
 		 
      } */
-	
-	
+	private function getIdpForSection($xmlcodep){
+		$rez=null;
+		
+		$section = Section::find()
+			->where(['xmlcode' =>$xmlcodep])
+			->one();
+			if($section){
+				$rez=$section->id;
+				
+				
+			}
+		
+		
+		
+		return $rez;
+	}
+ 	
 	public function procceccElementForSection($el){
-			$mes=$el->code ;
+			$mes=$el->xmlcode ;
 		
 			$section = Section::find()
-			->where(['code' =>ltrim(  $el->code  )])
+			->where(['xmlcode' =>ltrim(  $el->xmlcode  )])
 			->one();
 	
 	if(!$section){
@@ -177,7 +193,9 @@ class AdminModel extends Model
 			 $section->xmlcode=$el->xmlcode;
 			  $section->xmlcodep=$el->xmlcodep;
 			 $section->active=$el->active;
-			 $section->idp =$el->idp ;
+			  $section->idp =$this->getIdpForSection($section->xmlcodep) ;
+			
+			
 			 $section->codep =$el->codep;
 			 
 			// $el->quantity ='0';
@@ -196,7 +214,7 @@ class AdminModel extends Model
 			 $section->xmlcode=$el->xmlcode;
 			  $section->xmlcodep=$el->xmlcodep;
 			 $section->active=$el->active;
-			 $section->idp =$el->idp ;
+			  $section->idp =$this->getIdpForSection($section->xmlcodep) ;
 			 $section->codep =$el->codep;
 			 
 			// $el->quantity ='0';
@@ -415,12 +433,15 @@ class AdminModel extends Model
 									 
 										 $this->procceccArrayOfStingFromFileArtist($ar); 
 
-									  $mes=$mes.'  '.$ar[0].'<br>';    
+									  //$mes=$mes.'  '.$ar[0].'<br>';    
 									 
 									
 									 }
 								   }
 								  else $mes="Ошибка при открытии файла";
+								  
+								  
+								  $mes=$mes.$count.'<br>'; 
 								  
 								  
 								  fclose($fp);
@@ -679,8 +700,8 @@ class AdminModel extends Model
 											->where(['elementid' =>$element->id])
 											->one();
 											 if($price){
-														//$mes=$mes.'finde price'.$ar[10].'<br>';
-														$price->price=floatval( str_replace(' ','', str_replace(',','.',$ar[12])));
+														$mes=$mes.'finde price'.$ar[10].'  '.$element->xmlcode.'  '.$ar[12].'<br>';
+														$price->price=floatval( str_replace(',','.',$ar[12]));
 														$price->type=2;
 														$price->save();
 
@@ -706,7 +727,7 @@ class AdminModel extends Model
 								 
 								 
 								 
-								 //$this->message=$this->message.$mes;
+								 $this->message=$this->message.$mes;
 			 
 		 }
 	 
@@ -1305,6 +1326,136 @@ class AdminModel extends Model
 		
 		
 	}
+	 
+	 public function  procceccArrayOfStingFrom1Cfile($ar){
+		  // 	$this->message=$this->message.' procceccArrayOfStingFrom1Cfile 1   '."\n\r"; 
+     if(!isset($ar[0])){return;};
+	 
+	 if($ar[9]==0){
+		 
+		 $this->message=$this->message." it is not section element  "."\n\r";
+	 }else{
+		 
+		  $this->message=$this->message." it is section element  "."\n\r";
+		 
+
+	 };
+	 
+	 
+	 	$this->message=$this->message.' procceccArrayOfStingFrom1Cfile 2   '."\n\r".$ar[6]."\n\r".$ar[7]."\n\r".$ar[8]."\n\r".$ar[9]."\n\r"."\n\r"."\n\r"."\n\r"."\n\r"."\n\r";
+	 
+		$el = Element::find()
+    ->where(['xmlcode' =>ltrim($ar[0])])
+    ->one();
+	
+	   if($el){ 
+		       
+			   //	$this->message=$this->message.' finded  el '.$ar[1];;
+			   
+			  //quantity
+			  $el->active=false;
+              if(ltrim($ar[6])=="not"){ $this->message=$this->message.' quantity  not '."\n\r";    }else{		//$this->message=$this->message.' quantity  is  '.$ar[6]."\n\r";;
+				  $el->quantity=floatval(  ltrim($ar[6])); $el->active=true; }
+			  //weight
+			  if(ltrim($ar[7])=="not"){$el->weight=0;   }else{$el->weight=floatval(  ltrim($ar[7]) );}	 
+			  //price
+			  if(ltrim($ar[8])=="not"){ $el->price=0;    }else{$el->price=floatval(  ltrim($ar[8]) );}	 
+			  
+
+			  $el->save();
+		 
+		
+		
+	   }else{ 
+		   
+		 	$this->message=$this->message.' else make element ='.$ar[1];;
+		   
+		   	$el=new Element();
+
+			  
+		   
+			
+				$el->code=ltrim($ar[1]);
+				$el->xmlcode=ltrim($ar[0]);;
+				$el->name= ltrim($ar[5]);
+				$el->artikul=ltrim($ar[4]);;
+				$el->xmlcodep =ltrim($ar[2]);
+				$el->issection =ltrim($ar[9]); 	
+				$el->active=false;
+				$el->idp ='';
+				
+				  //quantity
+			  $el->active=false;
+              if(ltrim($ar[6])=="not"){}else{	 
+				  $el->quantity=floatval(  ltrim($ar[6])); $el->active=true; }
+			  //weight
+			  if(ltrim($ar[7])=="not"){$el->weight=0;   }else{$el->weight=floatval(  ltrim($ar[7]) );}	 
+			  //price
+			  if(ltrim($ar[8])=="not"){ $el->price=0;    }else{$el->price=floatval(  ltrim($ar[8]) );}	 
+			  
+			
+
+				$el->save();
+				
+			  
+		   
+	   }
+	
+	
+	if($ar[9]==1){
+					//we have to make section.
+					
+					
+					 $this->procceccElementForSection($el);
+					
+					
+					
+				}
+ 
+ 
+		}
+	 
+	 public function  LoadeNomFrom1Cfile(){
+		 
+		   $fp = fopen($this->NameOf1Cfile, "r"); // Открываем файл в режиме чтения
+					
+					
+								$count=0;
+							//	$mes=" LoadeNomFrom1Cfile";
+
+								 if ($fp) 
+								  {$mes=$mes.'  file is '.'<br>';
+									 while (!feof($fp))
+									 {      $count=$count+1; //if($count==20){break;};
+									       $mytext = fgets($fp, 999);
+									 
+								
+									 $ar=str_getcsv($mytext,";");
+									 
+										 $this->procceccArrayOfStingFrom1Cfile($ar); 
+
+									  //$mes=$mes.'  '.$ar[0].'<br>';    
+									 
+									
+									 }
+								   }
+								  else //$mes="Ошибка при открытии файла";
+								  
+								  
+								 // $mes=$mes.$count.'<br>'; 
+								  
+								  
+								  fclose($fp);
+					 
+			 
+					 
+					 
+					 // $this->message=$this->message.$mes;
+		 
+		 
+		 
+		 
+	 }
 	 
 	 
 }
