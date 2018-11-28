@@ -1314,8 +1314,18 @@ class AdminModel extends Model
 		  // 	$this->message=$this->message.' procceccArrayOfStingFrom1Cfile 1   '."\n\r"; 
      if(!isset($ar[0])){return;};
 	 
+	 if($ar[9]==0){
+		 
+		 $this->message=$this->message." it is not section element  "."\n\r";
+	 }else{
+		 
+		  $this->message=$this->message." it is section element  "."\n\r";
+		 
+
+	 };
 	 
-	 	//$this->message=$this->message.' procceccArrayOfStingFrom1Cfile 2   '."\n\r".$ar[6]."\n\r".$ar[7]."\n\r".$ar[8]."\n\r";
+	 
+	 	$this->message=$this->message.' procceccArrayOfStingFrom1Cfile 2   '."\n\r".$ar[6]."\n\r".$ar[7]."\n\r".$ar[8]."\n\r".$ar[9]."\n\r"."\n\r"."\n\r"."\n\r"."\n\r"."\n\r";
 	 
 		$element = Element::find()
     ->where(['xmlcode' =>ltrim($ar[0])])
@@ -1353,7 +1363,7 @@ class AdminModel extends Model
 				$el->name= ltrim($ar[5]);
 				$el->artikul=ltrim($ar[4]);;
 				$el->xmlcodep =ltrim($ar[2]);
-				$el->issection =ltrim(0); 	
+				$el->issection =ltrim($ar[9]); 	
 				$el->active=false;
 				$el->idp ='';
 				
@@ -1369,6 +1379,19 @@ class AdminModel extends Model
 			
 
 				$el->save();
+				
+				
+				
+				if($ar[9]==0){
+					//we have to make section.
+					
+					 $this->procceccElementForSection($el);
+					
+					
+					
+				}
+				
+				
 		   
 		   
 	   }
