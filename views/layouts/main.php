@@ -55,7 +55,7 @@ $this->beginPage() ?>
         <?php endif; ?>
     </div>
     <?php NavBar::begin([
-            'brandLabel' => 'Магазин "Художник" на оптовой базе "Мэтр"',
+            'brandLabel' => LokalFileModel::getDataByKeyFromLocalfile('header_title'),
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
                 'class' => ''
