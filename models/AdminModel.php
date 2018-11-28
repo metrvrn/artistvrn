@@ -159,13 +159,28 @@ class AdminModel extends Model
 		 
 		 
      } */
-	
-	
+	private function getIdpForSection($xmlcodep){
+		$rez=null;
+		
+		$section = Section::find()
+			->where(['xmlcode' =>$xmlcodep])
+			->one();
+			if($section){
+				$rez=$section->id;
+				
+				
+			}
+		
+		
+		
+		return $rez;
+	}
+ 	
 	public function procceccElementForSection($el){
-			$mes=$el->code ;
+			$mes=$el->xmlcode ;
 		
 			$section = Section::find()
-			->where(['code' =>ltrim(  $el->code  )])
+			->where(['xmlcode' =>ltrim(  $el->xmlcode  )])
 			->one();
 	
 	if(!$section){
@@ -178,7 +193,9 @@ class AdminModel extends Model
 			 $section->xmlcode=$el->xmlcode;
 			  $section->xmlcodep=$el->xmlcodep;
 			 $section->active=$el->active;
-			 $section->idp =$el->idp ;
+			  $section->idp =$this->getIdpForSection($section->xmlcodep) ;
+			
+			
 			 $section->codep =$el->codep;
 			 
 			// $el->quantity ='0';
@@ -197,7 +214,7 @@ class AdminModel extends Model
 			 $section->xmlcode=$el->xmlcode;
 			  $section->xmlcodep=$el->xmlcodep;
 			 $section->active=$el->active;
-			 $section->idp =$el->idp ;
+			  $section->idp =$this->getIdpForSection($section->xmlcodep) ;
 			 $section->codep =$el->codep;
 			 
 			// $el->quantity ='0';
@@ -1327,25 +1344,25 @@ class AdminModel extends Model
 	 
 	 	$this->message=$this->message.' procceccArrayOfStingFrom1Cfile 2   '."\n\r".$ar[6]."\n\r".$ar[7]."\n\r".$ar[8]."\n\r".$ar[9]."\n\r"."\n\r"."\n\r"."\n\r"."\n\r"."\n\r";
 	 
-		$element = Element::find()
+		$el = Element::find()
     ->where(['xmlcode' =>ltrim($ar[0])])
     ->one();
 	
-	   if($element){ 
+	   if($el){ 
 		       
-			   //	$this->message=$this->message.' finded  element '.$ar[1];;
+			   //	$this->message=$this->message.' finded  el '.$ar[1];;
 			   
 			  //quantity
-			  $element->active=false;
+			  $el->active=false;
               if(ltrim($ar[6])=="not"){ $this->message=$this->message.' quantity  not '."\n\r";    }else{		//$this->message=$this->message.' quantity  is  '.$ar[6]."\n\r";;
-				  $element->quantity=floatval(  ltrim($ar[6])); $element->active=true; }
+				  $el->quantity=floatval(  ltrim($ar[6])); $el->active=true; }
 			  //weight
-			  if(ltrim($ar[7])=="not"){$element->weight=0;   }else{$element->weight=floatval(  ltrim($ar[7]) );}	 
+			  if(ltrim($ar[7])=="not"){$el->weight=0;   }else{$el->weight=floatval(  ltrim($ar[7]) );}	 
 			  //price
-			  if(ltrim($ar[8])=="not"){ $element->price=0;    }else{$element->price=floatval(  ltrim($ar[8]) );}	 
+			  if(ltrim($ar[8])=="not"){ $el->price=0;    }else{$el->price=floatval(  ltrim($ar[8]) );}	 
 			  
 
-			  $element->save();
+			  $el->save();
 		 
 		
 		
@@ -1380,9 +1397,12 @@ class AdminModel extends Model
 
 				$el->save();
 				
-				
-				
-				if($ar[9]==0){
+			  
+		   
+	   }
+	
+	
+	if($ar[9]==1){
 					//we have to make section.
 					
 					
@@ -1391,12 +1411,6 @@ class AdminModel extends Model
 					
 					
 				}
-				
-				
-		   
-		   
-	   }
-	
  
  
 		}
