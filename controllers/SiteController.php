@@ -91,8 +91,8 @@ class SiteController extends Controller
 		
 		$akciiModel->FillarrElements();
 		$akciiModel->fillImageForElementArray();		
-		$akciiModel->fillPriceForElementArray();		
-		$akciiModel->fillQuantityForElementArray();
+		//$akciiModel->fillPriceForElementArray();		
+		//$akciiModel->fillQuantityForElementArray();
 		
 		
 		

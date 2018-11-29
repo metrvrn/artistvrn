@@ -7,6 +7,7 @@ use yii\base\Model;
 use app\models\Basket;
 use app\models\Image;
 use app\models\Price;
+use app\models\Element;
 
 use app\models\Usersessitions;
 
@@ -55,14 +56,16 @@ class BasketModel extends Model
 		  
 		  $mes=$this->sessionForBasket;
 		 
-		 $price=Price::find()
-		 ->where(['elementid'=>$this->elementForAddToBasket])
+		 
+		 
+		 $price=Element::find()
+		 ->where(['id'=>$this->elementForAddToBasket])
 		 ->one();
 		 if(!$price){			 
 			 $this->message='no price';
 			 return;
 		 }else{
-			 $basket->price=$price['price'];
+			 $basket->price=$price->price;
 			 
 		 }
 		 

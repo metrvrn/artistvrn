@@ -107,8 +107,8 @@ class AkciiModel extends Model
 			$idArray[ 'index1']= $element->index1;
 			$idArray[ 'index2']= $element->index2;
 			$idArray[ 'idp']= $element->idp;
-			
-			
+			$idArray[ 'price']= $element->price;//quantity
+			$idArray[ 'quantity']= $element->quantity;
 			$this->arrElements[]=$idArray;
 		};
 		 
