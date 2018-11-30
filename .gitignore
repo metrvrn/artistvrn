@@ -8,3 +8,4 @@ localdata.txt
 web/.htaccess
 composer.phar
 web/favicon.ico
+web/css/custom.css
