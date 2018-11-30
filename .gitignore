@@ -5,3 +5,6 @@ localdata.txt
 /config/db.php
 /web/images
 /.vscode
+web/.htaccess
+composer.phar
+web/favicon.ico
