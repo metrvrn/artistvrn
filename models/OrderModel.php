@@ -443,7 +443,7 @@ class OrderModel extends Model
 						['order' => $this]
 					)
 					->setFrom([LokalFileModel::getDataByKeyFromLocalfile('local_data_email_admin_for_order') => "Интернет магазин " . LokalFileModel::getDataByKeyFromLocalfile('local_data_nameComppany')])
-					->setTo(LokalFileModel::getDataByKeyFromLocalfile('local_data_email_admin_for_order'))
+					->setTo(LokalFileModel::getDataByKeyFromLocalfile('local_data_email'))
 					->setSubject('Заказ № ' . $this->orderId)
 					->send();
 			
