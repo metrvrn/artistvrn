@@ -4,6 +4,9 @@ Disallow: /admin
 Crawl-delay: 3
 
 User-Agent: YandexBot
+Crawl-delay: 5
+
+User-Agent: YandexBot
 Crawl-delay: 20
 
 User-agent: BLEXBot
